@@ -8,6 +8,7 @@ export default defineConfig({
     alias: [
       { find: '@Model', replacement: path.resolve(__dirname, 'src/Model') },
       { find: '@Components', replacement: path.resolve(__dirname, 'src/Components') },
+      { find: '@Utils', replacement: path.resolve(__dirname, 'src/Utils') },
     ],
   },
   plugins: [react()],

@@ -7,18 +7,34 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Card } from 'primereact/card';
 import FormInputText from '@Components/FormInputText.tsx';
 import { Button } from 'primereact/button';
+import { useState } from 'react';
+import PredictionResult from '@Model/PredictionResult.ts';
+import { predict } from '@Utils/PredictionService.ts';
 
 const Prediction = () => {
   const form = useForm<PredictionValidationSchemaType>({
     resolver: yupResolver(PredictionValidationSchema),
   });
 
+  const [predictionResult, setPredictionResult] = useState<PredictionResult>();
+
+  const handlePredictSubmit = async (data: PredictionValidationSchemaType) => {
+    const res = await predict(data);
+    if (!res) {
+      return;
+    }
+    setPredictionResult(res);
+  };
+
   return (
     <>
       <main>
-        <form className="container">
+        <form className="container" onSubmit={form.handleSubmit(handlePredictSubmit)}>
           <div className="col-12 flex justify-content-center">
-            <Button type="submit">Submit̉</Button>
+            <Button type="submit">Submit</Button>
+            <Button type="button" onClick={() => setPredictionResult(undefined)}>
+              Clear
+            </Button>
           </div>
           <div className="col-6">
             <Card title="Home team" className="m-2">
@@ -149,6 +165,12 @@ const Prediction = () => {
             </Card>
           </div>
         </form>
+        <>
+          <div>{predictionResult?.homeWin ?? '-'}%</div>
+          <div>{predictionResult?.draw ?? '-'}%</div>
+          <div>{predictionResult?.awayWin ?? '-'}%</div>
+        </>
+        )
       </main>
     </>
   );
