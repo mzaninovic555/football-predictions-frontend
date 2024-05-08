@@ -31,12 +31,6 @@ const Prediction = () => {
     <>
       <main>
         <form className="container" onSubmit={form.handleSubmit(handlePredictSubmit)}>
-          <div className="col-12 flex justify-content-center">
-            <Button type="submit">Submit</Button>
-            <Button type="button" onClick={() => setPredictionResult(undefined)}>
-              Clear
-            </Button>
-          </div>
           <div className="sm:col-12 md:col-6">
             <Card title="Home team" className="m-2 flex flex-column shadow-5">
               <FormInputText
@@ -220,6 +214,20 @@ const Prediction = () => {
                 </div>
               </div>
             </Card>
+          </div>
+          <div className="col-12 flex justify-content-center gap-2">
+            <Button className="w-1 justify-content-center" type="submit">
+              Submit
+            </Button>
+            <Button
+              className="w-1 justify-content-center"
+              type="button"
+              onClick={() => {
+                setPredictionResult(undefined);
+                form.reset();
+              }}>
+              Clear
+            </Button>
           </div>
         </form>
         <>
