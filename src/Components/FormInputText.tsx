@@ -9,6 +9,7 @@ interface FormInputTextProps {
   label?: string;
   required?: boolean;
   form: UseFormReturn;
+  className?: string;
 }
 
 const FormInputText: FC<FormInputTextProps> = ({
@@ -18,10 +19,11 @@ const FormInputText: FC<FormInputTextProps> = ({
   label,
   required,
   form,
+  className,
 }) => {
   return (
     <>
-      <div className="flex flex-column">
+      <div className={`flex flex-column ${className ?? ''}`}>
         {label && (
           <label htmlFor={name} className="align-self-start block text-500 font-semibold mb-1">
             {label}
