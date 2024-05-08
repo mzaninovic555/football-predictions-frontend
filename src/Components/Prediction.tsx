@@ -38,7 +38,7 @@ const Prediction = () => {
             </Button>
           </div>
           <div className="sm:col-12 md:col-6">
-            <Card title="Home team" className="m-2 flex flex-column">
+            <Card title="Home team" className="m-2 flex flex-column shadow-5">
               <FormInputText
                 className="col-12"
                 type="number"
@@ -48,26 +48,26 @@ const Prediction = () => {
               />
               <Divider />
               <div className="flex flex-column">
-                <h3 className="m-0 mt-2 p-2">Form</h3>
+                <h3 className="m-0 mt-2 p-2">Last 5 matches (all competitions)</h3>
                 <div className="flex flex-row flex-wrap">
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Last 5 wins"
+                    label="Wins"
                     name="home_last_5_wins"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Last 5 draws"
+                    label="Draws"
                     name="home_last_5_draws"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Last 5 losses"
+                    label="Losses"
                     name="home_last_5_losses"
                     form={form as unknown as UseFormReturn}
                   />
@@ -80,21 +80,21 @@ const Prediction = () => {
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Goals scored"
+                    label="Scored"
                     name="home_goals_scored"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Goals conceded"
+                    label="Conceded"
                     name="home_goals_conceded"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Goal difference"
+                    label="Goal Difference"
                     name="home_goal_difference"
                     form={form as unknown as UseFormReturn}
                   />
@@ -102,26 +102,26 @@ const Prediction = () => {
               </div>
               <Divider />
               <div className="flex flex-column">
-                <h3 className="m-0 mt-2 p-2">Season wins/draws/losses</h3>
+                <h3 className="m-0 mt-2 p-2">Season wins/draws/losses in competition</h3>
                 <div className="flex flex-row flex-wrap">
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Season wins"
+                    label="Wins"
                     name="home_season_wins"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Season draws"
+                    label="Draws"
                     name="home_season_draws"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Season losses"
+                    label="Losses"
                     name="home_season_losses"
                     form={form as unknown as UseFormReturn}
                   />
@@ -130,7 +130,7 @@ const Prediction = () => {
             </Card>
           </div>
           <div className="sm:col-12 md:col-6">
-            <Card title="Away team" className="m-2 flex flex-column">
+            <Card title="Away team" className="m-2 flex flex-column shadow-5">
               <FormInputText
                 className="col-12"
                 type="number"
@@ -140,26 +140,26 @@ const Prediction = () => {
               />
               <Divider />
               <div className="flex flex-column">
-                <h3 className="m-0 mt-2 p-2">Form</h3>
+                <h3 className="m-0 mt-2 p-2">Last 5 matches (all competitions)</h3>
                 <div className="flex flex-row flex-wrap">
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Last 5 wins"
+                    label="Wins"
                     name="away_last_5_wins"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Last 5 draws"
+                    label="Draws"
                     name="away_last_5_draws"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Last 5 losses"
+                    label="Losses"
                     name="away_last_5_losses"
                     form={form as unknown as UseFormReturn}
                   />
@@ -172,21 +172,21 @@ const Prediction = () => {
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Goals scored"
+                    label="Scored"
                     name="away_goals_scored"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Goals conceded"
+                    label="Conceded"
                     name="away_goals_conceded"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Goal difference"
+                    label="Goal Difference"
                     name="away_goal_difference"
                     form={form as unknown as UseFormReturn}
                   />
@@ -194,26 +194,26 @@ const Prediction = () => {
               </div>
               <Divider />
               <div className="flex flex-column">
-                <h3 className="m-0 mt-2 p-2">Season wins/draws/losses</h3>
+                <h3 className="m-0 mt-2 p-2">Season wins/draws/losses in competition</h3>
                 <div className="flex flex-row flex-wrap">
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Season wins"
+                    label="Wins"
                     name="away_season_wins"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Season draws"
+                    label="Draws"
                     name="away_season_draws"
                     form={form as unknown as UseFormReturn}
                   />
                   <FormInputText
                     className="sm:col-12 md:col-4"
                     type="number"
-                    label="Season losses"
+                    label="Losses"
                     name="away_season_losses"
                     form={form as unknown as UseFormReturn}
                   />
