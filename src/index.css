@@ -14,6 +14,11 @@ body {
   background-color: #f6f6f6;
 }
 
+h1 {
+  color: #4b5563;
+  font-weight: bold;
+}
+
 .container {
   margin: 0 auto;
   width: 80%;
@@ -24,6 +29,14 @@ body {
 
 .p-divider {
   margin: 0.25rem 0;
+}
+
+#result .p-card-title {
+  text-align: center;
+}
+
+button {
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 768px) {
