@@ -77,7 +77,7 @@ const Prediction = () => {
         <div className="w-full text-center">
           <h1 className="mb-0">Football winner predictor</h1>
           <h3 className="my-0">A simple web app that queries a neural network based on statistics in the form below. </h3>
-          <h5 className="mt-0 font-italic">Disclaimer: don't use these results for gambling or betting purposes. Any results gained are to be taken with a grain of salt </h5>
+          <h4 className="mt-0">Disclaimer: don't use these results for gambling or betting purposes. These predictions are to be taken with a grain of salt. </h4>
         </div>
         <form className="container" onSubmit={form.handleSubmit(handlePredictSubmit)}>
           <div className="sm:col-12 md:col-6">
