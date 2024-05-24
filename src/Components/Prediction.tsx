@@ -57,7 +57,7 @@ const Prediction = () => {
     <>
       <main>
         <div className="w-full text-center">
-          <h1>Football winnder predictor</h1>
+          <h1>Football winner predictor</h1>
         </div>
         <form className="container" onSubmit={form.handleSubmit(handlePredictSubmit)}>
           <div className="sm:col-12 md:col-6">
