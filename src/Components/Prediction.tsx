@@ -13,6 +13,7 @@ import { predict } from '@Utils/PredictionService.ts';
 import { Divider } from 'primereact/divider';
 import PredictionRequest from '@Model/PredictionRequest.ts';
 import { Export, Trash } from '@phosphor-icons/react';
+import {Toast} from "primereact/toast";
 
 const Prediction = () => {
   const form = useForm<PredictionValidationSchemaType>({
@@ -20,7 +21,10 @@ const Prediction = () => {
   });
 
   const [predictionResult, setPredictionResult] = useState<PredictionResult>();
+  const [loading, setLoading] = useState<boolean>(false);
+
   const resultRef = useRef<HTMLDivElement>(null);
+  const toast = useRef<Toast>(null);
 
   const handlePredictSubmit = async (data: PredictionValidationSchemaType) => {
     const body: PredictionRequest = {
@@ -45,19 +49,35 @@ const Prediction = () => {
       away_season_draws: Number(data.away_season_draws),
       away_season_losses: Number(data.away_season_losses),
     };
-    const res = await predict(body);
-    if (!res) {
-      return;
+
+    try {
+      setLoading(true);
+      const res = await predict(body);
+      if (!res) {
+        return;
+      }
+      setPredictionResult(res);
+      setTimeout(() => resultRef.current?.scrollIntoView({behavior: 'smooth'}), 0);
+    } catch (error) {
+      console.error(error);
+      toast?.current?.show({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Something went wrong.',
+        sticky: true,
+      });
     }
-    setPredictionResult(res);
-    setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth' }), 0);
+    setLoading(false);
   };
 
   return (
     <>
       <main>
+        <Toast ref={toast} />
         <div className="w-full text-center">
-          <h1>Football winner predictor</h1>
+          <h1 className="mb-0">Football winner predictor</h1>
+          <h3 className="my-0">A simple web app that queries a neural network based on statistics in the form below. </h3>
+          <h5 className="mt-0 font-italic">Disclaimer: don't use these results for gambling or betting purposes. Any results gained are to be taken with a grain of salt </h5>
         </div>
         <form className="container" onSubmit={form.handleSubmit(handlePredictSubmit)}>
           <div className="sm:col-12 md:col-6">
@@ -68,7 +88,7 @@ const Prediction = () => {
               <FormInputText
                 className="sm:col-12 md:col-4"
                 type="number"
-                label="Position"
+                label="Position - 0 if knockouts"
                 name="home_position"
                 form={form as unknown as UseFormReturn}
               />
@@ -163,7 +183,7 @@ const Prediction = () => {
               <FormInputText
                 className="sm:col-12 md:col-4"
                 type="number"
-                label="Position"
+                label="Position - 0 if knockouts"
                 name="away_position"
                 form={form as unknown as UseFormReturn}
               />
@@ -252,6 +272,8 @@ const Prediction = () => {
           </div>
           <div className="col-12 flex justify-content-center gap-2">
             <Button
+              disabled={loading}
+              loading={loading}
               icon={<Export />}
               raised
               severity="success"
@@ -260,6 +282,8 @@ const Prediction = () => {
               Submit
             </Button>
             <Button
+              disabled={loading}
+              loading={loading}
               icon={<Trash />}
               raised
               severity="danger"
